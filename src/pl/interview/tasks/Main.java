@@ -9,7 +9,7 @@ public class Main {
      Created by xciechan
      on 2022-05-09
 
-     The application finds sum of A(n,n) mod 14^8
+     The application finds sum of Ackermann Function A(n,n) divided 14^8
 
      A(m,n) = | n+1                 if m=0          |
               | A(m-1, 1)           if m>0 and n=0  |
@@ -18,7 +18,7 @@ public class Main {
 
     public static void main(String[] args) {
         int n = 6;
-        System.out.println("Sum of A(n,n) for n <0;6> dived 14^8= " + resultOfAckermannFunction(n));
+        System.out.println("Sum of A(n,n) for n <0;6> divided 14^8= " + resultOfAckermannFunction(n));
 
     }
 
