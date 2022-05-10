@@ -1,5 +1,6 @@
 package pl.interview.tasks;
 
+import java.math.*;
 import java.util.Stack;
 
 public class Main {
@@ -10,25 +11,32 @@ public class Main {
 
      The application finds sum of A(n,n) mod 14^8
 
-     A(m,n) = | n+1                 if m=0
-              | A(m-1, 1)           if m>0 and n=0
-              | A(m-1, A(m, n-1))   if m>0 and n>0
+     A(m,n) = | n+1                 if m=0          |
+              | A(m-1, 1)           if m>0 and n=0  |
+              | A(m-1, A(m, n-1))   if m>0 and n>0  |
      */
 
     public static void main(String[] args) {
         int n = 6;
-        System.out.println("Sum of A(n,n) for n <0;6> = " + sumOfAckermannFunction(n));
+        System.out.println("Sum of A(n,n) for n <0;6> dived 14^8= " + resultOfAckermannFunction(n));
 
     }
 
-    public static int sumOfAckermannFunction(int n){
+    public static BigDecimal resultOfAckermannFunction(int n){
         int sumOfAckermannFunction = 0;
 
         for (int i=0; i<=n; i++){
             sumOfAckermannFunction += AckermannFunction(i,i);
         }
 
-        return sumOfAckermannFunction;
+        return resultDivided(sumOfAckermannFunction);
+    }
+
+    public static BigDecimal resultDivided(int sumOfAckermannFunction){
+        BigDecimal divisor = new BigDecimal("14").pow(8);
+        MathContext mathContext = new MathContext(20);
+
+        return BigDecimal.valueOf(sumOfAckermannFunction).divide(divisor,mathContext);
     }
 
     public static int AckermannFunction(int m, int n){
